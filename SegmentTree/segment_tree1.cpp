@@ -3,8 +3,8 @@
 using namespace std;
 
 const int MX=1e5+10;
-int tree[4*MX];
-int v[MX];
+long long tree[4*MX];
+long long v[MX];
 
 void build(int node,int L,int R){
 
@@ -37,7 +37,7 @@ void update(int node,int L,int R,int index,int value){
 
     }
 }
-int query(int node,int L,int R,int l,int r){
+long long query(int node,int L,int R,int l,int r){
 
     if(R<l or r<L) return 0;
     if(l<=L and R <=r)
@@ -55,44 +55,39 @@ int query(int node,int L,int R,int l,int r){
 int main(){
 
 
-    int n;
-    cin>>n;
+    int n,k;
+    cin>>n>>k;
     for(int i=1;i<=n;i++){
 
         cin>>v[i];
     }
-
     build(1,1,n);
 
-    for(int i=0;i<20;i++){
+    for(int i=0;i<k;i++){
 
-        cout<<i<<"\t";
+        int x;
+        cin>>x;
+        if(x==2){
+            int l,r;
+            cin>>l>>r;
+            cout<<query(1,1,n,l+1,r)<<endl;
+        }else{
+
+            int ind,v;
+            cin>>ind>>v;
+             update(1,1,n,ind+1,v);
+
+
+
+
+        }
+
+
     }
 
-    cout<<endl;
+    
 
-
-    for(int i=0;i<20;i++){
-
-        cout<<tree[i]<<"\t";
-    }
-       cout<<endl;
-
-    update(1,1,n,1,20);
-     for(int i=0;i<20;i++){
-
-        cout<<i<<"\t";
-    }
-
-    cout<<endl;
-
-
-    for(int i=0;i<20;i++){
-
-        cout<<tree[i]<<"\t";
-    }
-
-    cout<<endl<<query(1,1,n,2,4);
+ 
 
     return 0;
 }
