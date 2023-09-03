@@ -3,7 +3,7 @@
 int pf(int a,int n){
 
 
-	if(n==1) return a;
+	if(n==0) return 1;
 
 	return a*pf(a,n-1);
 }
