@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
  using namespace std;
 bool check(vector <int> &v,int n, int pos){
-	if(n==1 || n==0) return true;
+	if(pos==n-1) return true;
 
-	if(v[pos+1]>v[pos] && check(v,n-1,pos+1))return true;
+	if(v[pos+1]>v[pos] && check(v,n,pos+1))return true;
 	
-return false;
+	return false;
+
 	
 
 }
-
 
 
 
