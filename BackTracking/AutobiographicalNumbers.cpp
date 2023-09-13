@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+
+
 void imprimirVector(const std::vector<int>& vec) {
     for (const int& elemento : vec) {
         std::cout << elemento << " ";
@@ -28,6 +31,7 @@ bool checkfinal(vector <int> bio, vector <int> ct,int k){
  			return true;
 
  		}
+ 			//cout<<"xd"<<endl;
  		return false;
  			
 
@@ -44,31 +48,43 @@ bool checkfinal(vector <int> bio, vector <int> ct,int k){
 
  		if(check(bio,ct,pos+1)){
  			string t=to_string(i);
-
- 			return solver(n,pos+1,s+t,i, bio,ct);
+ 			if( solver(n,pos+1,s+t,i, bio,ct)) return true;
  		}
  		ct[i]--;
  		bio[pos+1]=0;
  		s[pos+1]='\0';
- 		//cout<<endl;
+ 		
 
 
 
  	}
+
  	return false;
  }
+ void autonumber(int n, int i){
 
+ 	string aux=to_string(i);
+
+ 	string s="";
+ 	s+=aux;
+	vector <int> ct(10,0);
+	vector <int> bio(10,0);
+	ct[i]++;
+	bio[0]=i;
+	solver(n,0,s,i,bio,ct);
+ }
 
 int main() {
 
-	string s="2";
-	vector <int> ct(10,0);
-	vector <int> bio(10,0);
-	ct[2]++;
-	bio[0]=2;
 	int n;
 	cin>>n;
-		cout<<solver(n,0,s,2,bio,ct);
+
+
+	
+	
+	for(int i=0;i<=9;i++){
+		autonumber(n,i);
+	}
 
 
 
